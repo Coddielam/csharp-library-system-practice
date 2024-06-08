@@ -7,6 +7,6 @@ public record CreateBookResponse
     Guid Id,
     string Title,
     string Author,
-    string ISBN,
+    string Isbn,
     Status Status
 );

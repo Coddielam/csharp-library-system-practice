@@ -6,5 +6,5 @@ public record CreateBookRequest
 (
     string Title,
     string Author,
-    string ISBN
+    string Isbn
 );

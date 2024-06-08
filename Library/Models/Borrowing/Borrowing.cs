@@ -2,15 +2,21 @@ namespace Library.Models;
 
 public class Borrowing
 {
-    public string PatronId { get; }
-    public string BookId { get; }
-    public DateTime BorrowedDateTime { get; }
-    public DateTime DueDateTime { get; }
+    public Guid Id { get; private set; }
+    public Patron Patron { get; private set; } = null!;
+    public Guid PatronId { get; private set; }
+    public ICollection<Book> Books { get; private set; } = null!;
+    public DateTime BorrowedDateTime { get; private set; }
+    public DateTime DueDateTime { get; private set; }
 
-    public Borrowing(string patronId, string bookId, DateTime borrowedDateTime, DateTime dueDateTime)
+    public Borrowing() { }
+
+    public Borrowing(Guid id, Patron patron, ICollection<Book> books, DateTime borrowedDateTime, DateTime dueDateTime)
     {
-        BookId = bookId;
-        PatronId = patronId;
+        Id = id;
+        Books = books;
+        Patron = patron;
+        PatronId = patron.Id;
         BorrowedDateTime = borrowedDateTime;
         DueDateTime = dueDateTime;
     }

@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSwaggerGen();
 
     builder.Services.AddScoped<IBookAppService, BookAppService>();
+    builder.Services.AddScoped<IBorrowingAppService, BorrowingAppService>();
+    builder.Services.AddScoped<IPatronAppService, IPatronAppService>();
     builder.Services.AddDbContext<LibraryDbContext>(options =>
                 options.UseSqlite("Data Source=Library.db"));
 }
@@ -26,9 +28,7 @@ var app = builder.Build();
     }
 
     app.UseHttpsRedirection();
-
     // app.UseAuthorization();
-
     app.MapControllers();
 
     app.Run();

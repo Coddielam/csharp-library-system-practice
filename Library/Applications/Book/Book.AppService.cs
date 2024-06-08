@@ -15,10 +15,19 @@ public class BookAppService : IBookAppService
         _dbContext = dbContext;
     }
 
-    public void CreateBook(Book book)
+    public Book CreateBook(string title, string author, string isbn)
     {
+
+        var book = new Book(
+            Guid.NewGuid(),
+            title,
+            author,
+            isbn,
+            Status.Available
+        );
         _dbContext.Books.Add(book);
         _dbContext.SaveChanges();
+        return book;
     }
 
     public Book? LendBook(Guid id)
