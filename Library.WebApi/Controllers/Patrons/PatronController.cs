@@ -18,7 +18,15 @@ public class PatronsController : ControllerBase
     [HttpPost]
     public IActionResult CreatePatron(CreatePatronRequest request)
     {
-        var patron = _patronAppService.CreatePatron(request.Name, request.Address);
+        var patron = new Patron(
+            id: Guid.NewGuid(),
+            name: request.Name,
+            address: request.Address,
+            borrowings: new List<Borrowing>()
+        );
+
+        _patronAppService.CreatePatron(patron);
+
         var patronResponse = new CreatePatronResponse(
             patron.Id,
             patron.Name,

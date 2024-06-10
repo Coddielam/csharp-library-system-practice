@@ -6,8 +6,6 @@ namespace Library.Applications;
 
 public class BookAppService : IBookAppService
 {
-    private readonly Dictionary<Guid, Book> _booksDict = new();
-
     private readonly LibraryDbContext _dbContext;
 
     public BookAppService(LibraryDbContext dbContext)
@@ -15,16 +13,13 @@ public class BookAppService : IBookAppService
         _dbContext = dbContext;
     }
 
-    public Book CreateBook(string title, string author, string isbn)
+    public List<Book> GetBooks(List<Guid> ids)
     {
+        return _dbContext.Books.Where(b => ids.Contains(b.Id)).ToList();
+    }
 
-        var book = new Book(
-            Guid.NewGuid(),
-            title,
-            author,
-            isbn,
-            Status.Available
-        );
+    public Book CreateBook(Book book)
+    {
         _dbContext.Books.Add(book);
         _dbContext.SaveChanges();
         return book;

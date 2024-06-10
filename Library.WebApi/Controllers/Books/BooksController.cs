@@ -1,5 +1,6 @@
 using Library.Applications;
 using Library.Contracts;
+using Library.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.WebApi.Controllers;
@@ -19,7 +20,15 @@ public class BooksController : ControllerBase
     public IActionResult CreateBook(CreateBookRequest request)
     {
 
-        var book = _bookAppService.CreateBook(request.Title, request.Author, request.Isbn);
+        var book = new Book(
+            id: Guid.NewGuid(),
+            title: request.Title,
+            author: request.Author,
+            isbn: request.Isbn,
+            status: Status.Available
+        );
+
+        _bookAppService.CreateBook(book);
 
         var bookResponse = new CreateBookResponse(
             book.Id,

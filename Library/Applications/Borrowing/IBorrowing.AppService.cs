@@ -4,5 +4,5 @@ namespace Library.Applications;
 
 public interface IBorrowingAppService
 {
-    Borrowing CreateBorrowingHistory(Guid patronId, List<Guid> bookIds);
+    Borrowing CreateBorrowingHistory(Patron patron, List<Book> books);
 }

@@ -5,22 +5,21 @@ namespace Library.Applications;
 
 public class PatronAppService : IPatronAppService
 {
-    private LibraryDbContext _dbContext;
+    private readonly LibraryDbContext _dbContext;
     public PatronAppService(LibraryDbContext dbContext)
     {
         _dbContext = dbContext;
     }
-    public Patron CreatePatron(string name, string address)
+    public Patron CreatePatron(Patron patron)
     {
-        var patron = new Patron(
-            id: Guid.NewGuid(),
-            name,
-            address,
-            borrowings: new List<Borrowing>()
-        );
 
         _dbContext.Patrons.Add(patron);
 
         return patron;
+    }
+
+    public Patron? GetPatron(Guid id)
+    {
+        return _dbContext.Patrons.Find(id);
     }
 }

@@ -4,5 +4,6 @@ namespace Library.Applications;
 
 public interface IPatronAppService
 {
-    Patron CreatePatron(string name, string address);
+    Patron CreatePatron(Patron patron);
+    Patron? GetPatron(Guid id);
 }
