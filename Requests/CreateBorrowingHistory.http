@@ -1,0 +1,11 @@
+POST http://localhost:5268/borrowings
+Content-Type: application/json
+
+{
+    "patronId": "99f0c0df-0fc4-45c0-889e-fc8ff8674c3f",
+    "bookIds": [
+        "601ebd84-781c-46a4-b2bf-768178c5c4c8",
+        "a212e89f-791f-4d91-94fd-807c2077b19c"      
+    ]
+}
+

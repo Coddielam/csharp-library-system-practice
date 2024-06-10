@@ -1,6 +1,5 @@
 using Library.Infrastructure;
 using Library.Models;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Library.Applications;
 

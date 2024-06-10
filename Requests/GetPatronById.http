@@ -1,0 +1,2 @@
+@id=cf066fa6-b442-4cd9-8ab2-64eed4361c1d
+GET http://localhost:5268/patrons/{{id}}

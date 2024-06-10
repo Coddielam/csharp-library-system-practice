@@ -3,4 +3,5 @@ obj
 *.db
 *.db-shm
 *.db-wal
-Requests
+
+.vscode

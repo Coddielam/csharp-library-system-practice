@@ -1,0 +1,9 @@
+POST http://localhost:5268/books
+Content-Type: application/json
+
+# request body
+{
+    "title": "Second book",
+    "author": "Eddie Lam",
+    "isbn": "9781402894626"
+}

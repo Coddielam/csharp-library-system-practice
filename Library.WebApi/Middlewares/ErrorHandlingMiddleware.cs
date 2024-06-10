@@ -2,19 +2,15 @@ using System.Net;
 
 namespace Library.WebApi.Middlewares;
 
-public class ErrorHandlingMiddleware : IMiddleware
+public class ErrorHandlingMiddleware
 {
     private readonly RequestDelegate _next;
 
-    private readonly ILogger _logger;
-
     public ErrorHandlingMiddleware(
-        RequestDelegate next,
-        ILogger logger
+        RequestDelegate next
     )
     {
         _next = next;
-        _logger = logger;
     }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
@@ -25,7 +21,6 @@ public class ErrorHandlingMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unhandled exception");
             await HandleExceptionAsync(context, ex);
         }
     }

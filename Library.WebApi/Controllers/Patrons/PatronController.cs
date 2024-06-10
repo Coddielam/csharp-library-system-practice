@@ -35,4 +35,15 @@ public class PatronsController : ControllerBase
         );
         return Ok(patronResponse);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult GetPatrons(Guid id)
+    {
+        var patron = _patronAppService.GetPatron(id);
+        if (patron == null)
+        {
+            return NotFound(string.Format("Patrong with id - {0} not found", id));
+        }
+        return Ok(_patronAppService.GetPatron(id));
+    }
 }

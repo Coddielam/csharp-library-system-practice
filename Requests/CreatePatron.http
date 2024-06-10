@@ -1,0 +1,9 @@
+POST http://localhost:5268/patrons
+Content-Type: application/json
+
+{
+    "Name": "Patron 1",
+    "Address": "123 Brooklyn Rd"
+}
+
+

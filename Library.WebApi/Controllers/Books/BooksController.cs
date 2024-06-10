@@ -40,4 +40,10 @@ public class BooksController : ControllerBase
 
         return Ok(bookResponse);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult GetBook(Guid id)
+    {
+        return Ok(_bookAppService.GetBooks(new List<Guid> { id }));
+    }
 }

@@ -31,14 +31,14 @@ public class BorrowingsController : ControllerBase
         if (books.Count != request.BookIds.Count)
         {
             var unknownIds = books.Select(book => !request.BookIds.Contains(book.Id));
-            return BadRequest(string.Format("Book ids not found: {0}", string.Join(", ", unknownIds)));
+            return NotFound(string.Format("Book ids not found: {0}", string.Join(", ", unknownIds)));
         }
 
         var patron = _patronAppService.GetPatron(request.PatronId);
 
         if (patron == null)
         {
-            return BadRequest(string.Format("Patron id not found: {0}", request.PatronId));
+            return NotFound(string.Format("Patron id not found: {0}", request.PatronId));
         }
 
         var borrowing = _borrowingAppService.CreateBorrowingHistory(patron, books);

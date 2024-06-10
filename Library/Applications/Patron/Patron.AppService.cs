@@ -14,7 +14,7 @@ public class PatronAppService : IPatronAppService
     {
 
         _dbContext.Patrons.Add(patron);
-
+        _dbContext.SaveChanges();
         return patron;
     }
 

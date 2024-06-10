@@ -1,0 +1,3 @@
+@id=d7ef3e5b-d4b7-4d56-a22a-afe6b09ab6bc
+
+GET http://localhost:5268/books/{{id}}
