@@ -1,5 +1,6 @@
 using Library.Applications;
 using Library.Infrastructure;
+using Library.WebApi.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,7 @@ var app = builder.Build();
     }
 
     app.UseHttpsRedirection();
+    app.UseErrorHandlingMiddleware();
     // app.UseAuthorization();
     app.MapControllers();
 
